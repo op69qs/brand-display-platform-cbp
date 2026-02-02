@@ -58,13 +58,13 @@ export default function Header({ locale }: HeaderProps) {
                     ))}
                 </div>
 
-                {/* Language Switcher */}
-                <div className="hidden md:flex items-center gap-2">
+                {/* Language Switcher - Always visible */}
+                <div className="flex items-center gap-1 md:gap-2">
                     {i18n.locales.map((loc) => (
                         <Link
                             key={loc}
                             href={getLocalePath(loc)}
-                            className={`px-2 py-1 text-xs rounded ${locale === loc
+                            className={`px-1.5 md:px-2 py-1 text-xs rounded ${locale === loc
                                 ? 'bg-red-600 text-white'
                                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                 }`}
@@ -119,21 +119,6 @@ export default function Header({ locale }: HeaderProps) {
                                 {t(locale, item.key)}
                             </Link>
                         ))}
-                        <div className="flex gap-2 pt-2 border-t">
-                            {i18n.locales.map((loc) => (
-                                <Link
-                                    key={loc}
-                                    href={getLocalePath(loc)}
-                                    className={`px-3 py-1 text-xs rounded ${locale === loc
-                                        ? 'bg-red-600 text-white'
-                                        : 'bg-gray-100 text-gray-600'
-                                        }`}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    {localeNames[loc]}
-                                </Link>
-                            ))}
-                        </div>
                     </div>
                 </div>
             )}
