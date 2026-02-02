@@ -33,14 +33,14 @@ export default function Header({ locale }: HeaderProps) {
     return (
         <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
             <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
-                {/* Logo */}
-                <Link href={`/${locale}`} className="flex items-center gap-2">
+                {/* Logo - Larger size with overhang effect */}
+                <Link href={`/${locale}`} className="flex items-center gap-2 relative">
                     <Image
                         src="/logo.png"
                         alt="CBP Logo"
-                        width={48}
-                        height={48}
-                        className="w-12 h-12 object-contain"
+                        width={80}
+                        height={80}
+                        className="w-16 h-16 md:w-20 md:h-20 object-contain -mb-4 md:-mb-6"
                     />
                 </Link>
 

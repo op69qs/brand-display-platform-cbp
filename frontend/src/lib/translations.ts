@@ -16,7 +16,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
         // Features
         modernSlaughterhouse: '现代化厂房屠宰加工',
-        exportGlobally: '符合GACC认证出口中国及全球',
+        exportGlobally: '优质冷链物流配送',
         verticallyIntegrated: '原料、加工、设证',
 
         // About
@@ -62,7 +62,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
         // Features
         modernSlaughterhouse: 'Modern Slaughterhouse',
-        exportGlobally: 'Export to China and Globally',
+        exportGlobally: 'Premium Cold Chain Logistics',
         verticallyIntegrated: 'Vertically Integrated Farming',
 
         // About
@@ -108,7 +108,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
         // Features
         modernSlaughterhouse: 'Современный перерабатывающий комплекс',
-        exportGlobally: 'Экспорт в Китай и другие страны мира',
+        exportGlobally: 'Премиальная холодильная логистика',
         verticallyIntegrated: 'Вертикально интегрированное хозяйство',
 
         // About
