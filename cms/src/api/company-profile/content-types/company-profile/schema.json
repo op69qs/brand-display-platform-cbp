@@ -1,0 +1,32 @@
+{
+    "kind": "collectionType",
+    "collectionName": "company_profiles",
+    "info": {
+        "singularName": "company-profile",
+        "pluralName": "company-profiles",
+        "displayName": "公司简介"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "content": {
+            "type": "richtext",
+            "required": true
+        },
+        "language": {
+            "type": "enumeration",
+            "enum": [
+                "zh",
+                "en",
+                "ru"
+            ],
+            "required": true,
+            "default": "zh"
+        }
+    }
+}

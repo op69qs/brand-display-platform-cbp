@@ -1,0 +1,146 @@
+############################################################
+# 系统相关 (OS Specific)
+############################################################
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+._*
+__MACOSX/
+
+# Windows / Linux
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*~
+
+############################################################
+# 开发工具与 IDE (IDE & Tools)
+############################################################
+.idea/
+*.iml
+.vscode/
+.mvn/
+nbproject/
+.mtj.tmp/
+.vercel
+.eslintcache
+*.tsbuildinfo
+next-env.d.ts
+
+# AI Tools
+.kiro
+.qoder
+.gemini
+
+############################################################
+# 依赖与包管理 (Dependencies & Package Managers)
+############################################################
+node_modules/
+/venv/
+.node_history
+.pnp.*
+lib-cov
+lcov.info
+coverage/
+
+# Yarn (v2/v3+)
+.yarn/*
+!.yarn/cache
+!.yarn/unplugged
+!.yarn/patches
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+############################################################
+# 编译产物、构建输出与部署 (Build & Deploy)
+############################################################
+/target/
+/target-dist/
+/dist/
+/build/
+/out/
+/.next/
+exports/
+.strapi
+.strapi-updater.json
+.strapi-cloud.json
+
+# 部署包特定规则
+/deploy-package/
+!deploy-package/service.sh
+/deploy_package/
+/project_zip/
+/pbc-file/
+
+############################################################
+# 日志、数据库与临时文件 (Logs, DB & Temp)
+############################################################
+*.log
+*-debug.log*
+*-error.log*
+.pnpm-debug.log*
+*.sql
+*.sqlite
+*.sqlite3
+/tmp/
+.tmp
+/import/
+pids
+results
+
+# 进程/崩溃日志
+*.pid
+hs_err_pid*
+
+############################################################
+# 通用文件后缀 (Common Extensions)
+############################################################
+# 二进制/执行文件
+*.class
+*.ctxt
+*.exe
+*.dll
+*.so
+*.o
+*.com
+*.seed
+*.swo
+*.swp
+*.swn
+*.swm
+
+# 压缩包 (按需取消注释 *.jar 或 *.zip)
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.tar.gz
+*.war
+*.nar
+*.ear
+# *.jar
+# *.zip
+
+# 数据与证书
+*.csv
+*.dat
+*.pem
+.env*
+license.txt
+
+############################################################
+# 静态资源与特殊路径 (Assets)
+############################################################
+public/
+assets/
+public/uploads/*
+!public/uploads/.gitkeep
+ssl/
