@@ -15,9 +15,9 @@ export const translations: Record<Locale, Record<string, string>> = {
         heroSubtitle: '来自吉尔吉斯斯坦的优质鸡肉',
 
         // Features
-        modernSlaughterhouse: '现代化厂房屠宰加工',
+        modernSlaughterhouse: '国际化现代屠宰标准',
         exportGlobally: '优质冷链物流配送',
-        verticallyIntegrated: '原料、加工、设证',
+        verticallyIntegrated: '全产业链垂直整合养殖',
 
         // About
         aboutUs: '关于我们',
