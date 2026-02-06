@@ -53,9 +53,10 @@ async function fetchStrapi<T>(
  */
 export async function getCompanyProfiles(language: string) {
     return fetchStrapi<StrapiItem[]>(
-        `/company-profiles?locale=${language}&populate=*`
+        `/company-profiles?filters[language][$eq]=${language}&populate=*`
     );
 }
+
 
 /**
  * Get news list by language

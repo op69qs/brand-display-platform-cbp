@@ -1,6 +1,7 @@
 import { Locale } from '@/lib/i18n';
 import { t } from '@/lib/translations';
 import ContactForm from '@/components/ContactForm';
+import { getCompanyProfiles } from '@/lib/strapi';
 import { Metadata } from 'next';
 
 type Params = { lang: string };
@@ -8,6 +9,13 @@ type Params = { lang: string };
 interface ContactPageProps {
     params: Promise<Params>;
 }
+
+// Default contact info fallback
+const defaultContactInfo = {
+    address: 'Bishkek, Kyrgyzstan',
+    email: 'info@cbp.kg',
+    phone: '+996 XXX XXX XXX',
+};
 
 export async function generateMetadata({ params }: ContactPageProps): Promise<Metadata> {
     const { lang } = await params;
@@ -20,6 +28,22 @@ export async function generateMetadata({ params }: ContactPageProps): Promise<Me
 export default async function ContactPage({ params }: ContactPageProps) {
     const { lang } = await params;
     const locale = lang as Locale;
+
+    // Fetch company profile for contact info
+    let contactInfo = defaultContactInfo;
+    try {
+        const response = await getCompanyProfiles(locale);
+        if (response.data && response.data.length > 0) {
+            const profile = response.data[0];
+            contactInfo = {
+                address: (profile.address as string) || defaultContactInfo.address,
+                email: (profile.email as string) || defaultContactInfo.email,
+                phone: (profile.phone as string) || defaultContactInfo.phone,
+            };
+        }
+    } catch (error) {
+        console.warn('[ContactPage] Failed to fetch contact info, using defaults:', error);
+    }
 
     return (
         <div className="py-16">
@@ -48,7 +72,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-800">{t(locale, 'address')}</h3>
-                                        <p className="text-gray-600 mt-1">Bishkek, Kyrgyzstan</p>
+                                        <p className="text-gray-600 mt-1">{contactInfo.address}</p>
                                     </div>
                                 </div>
 
@@ -60,7 +84,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-800">{t(locale, 'email')}</h3>
-                                        <p className="text-gray-600 mt-1">info@cbp.kg</p>
+                                        <p className="text-gray-600 mt-1">{contactInfo.email}</p>
                                     </div>
                                 </div>
 
@@ -72,7 +96,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-800">{t(locale, 'phone')}</h3>
-                                        <p className="text-gray-600 mt-1">+996 XXX XXX XXX</p>
+                                        <p className="text-gray-600 mt-1">{contactInfo.phone}</p>
                                     </div>
                                 </div>
                             </div>

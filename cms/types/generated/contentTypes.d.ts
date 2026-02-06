@@ -442,10 +442,12 @@ export interface ApiCompanyProfileCompanyProfile
     draftAndPublish: true;
   };
   attributes: {
+    address: Schema.Attribute.String;
     content: Schema.Attribute.RichText & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
     language: Schema.Attribute.Enumeration<['zh', 'en', 'ru']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'zh'>;
@@ -455,6 +457,7 @@ export interface ApiCompanyProfileCompanyProfile
       'api::company-profile.company-profile'
     > &
       Schema.Attribute.Private;
+    phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
