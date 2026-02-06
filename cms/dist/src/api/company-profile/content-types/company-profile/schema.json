@@ -18,6 +18,15 @@
             "type": "richtext",
             "required": true
         },
+        "address": {
+            "type": "string"
+        },
+        "phone": {
+            "type": "string"
+        },
+        "email": {
+            "type": "email"
+        },
         "language": {
             "type": "enumeration",
             "enum": [

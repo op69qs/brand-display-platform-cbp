@@ -53,9 +53,10 @@ async function fetchStrapi<T>(
  */
 export async function getCompanyProfiles(language: string) {
     return fetchStrapi<StrapiItem[]>(
-        `/company-profiles?filters[language][$eq]=${language}&populate=*`
+        `/company-profiles?filters[language][$eq]=${language}&pagination[limit]=1&populate=*`
     );
 }
+
 
 
 /**
