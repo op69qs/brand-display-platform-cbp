@@ -3,22 +3,33 @@
  * Ensures only one company profile per language
  */
 
+import { errors } from '@strapi/utils';
+
+const { ApplicationError } = errors;
+
 type LanguageType = 'zh' | 'en' | 'ru';
+
+const languageNames: Record<LanguageType, string> = {
+    zh: '中文',
+    en: 'English',
+    ru: 'Русский',
+};
 
 export default {
     async beforeCreate(event: { params: { data: { language?: string } } }) {
         const { data } = event.params;
 
         if (data.language) {
+            const lang = data.language as LanguageType;
             // Check if a record with the same language already exists
             const existingRecords = await strapi.documents('api::company-profile.company-profile').findMany({
-                filters: { language: data.language as LanguageType },
+                filters: { language: lang },
             });
 
             if (existingRecords.length > 0) {
-                throw new Error(
-                    `A company profile for language "${data.language}" already exists. ` +
-                    `Please edit the existing record instead of creating a new one.`
+                const langName = languageNames[lang] || lang;
+                throw new ApplicationError(
+                    `${langName} 语言的公司简介已存在，请编辑现有记录而非创建新记录。`
                 );
             }
         }
@@ -28,9 +39,10 @@ export default {
         const { documentId, data } = event.params;
 
         if (data.language) {
+            const lang = data.language as LanguageType;
             // Check if another record with the same language exists (excluding current record)
             const existingRecords = await strapi.documents('api::company-profile.company-profile').findMany({
-                filters: { language: data.language as LanguageType },
+                filters: { language: lang },
             });
 
             // Filter out the current record being updated
@@ -39,9 +51,9 @@ export default {
             );
 
             if (conflictingRecords.length > 0) {
-                throw new Error(
-                    `Another company profile for language "${data.language}" already exists. ` +
-                    `Each language can only have one company profile.`
+                const langName = languageNames[lang] || lang;
+                throw new ApplicationError(
+                    `${langName} 语言的公司简介已存在，每种语言只能有一条记录。`
                 );
             }
         }
